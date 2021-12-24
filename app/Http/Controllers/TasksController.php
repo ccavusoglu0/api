@@ -19,13 +19,27 @@ class TasksController extends Controller
         // return $tasks_collection->firstWhere('name', 'rm');
         // return $tasks_collection->all()
 
-        $sorted_tasks = $tasks_collection->sortDesc();
+        $sorted_tasks = $tasks_collection->sortByDesc('dependencies');
+        return $sorted_tasks->values()->all();
 
         $commands = $sorted_tasks->pluck('command');
 
-        //Dosyaya satır satır yazdır
+        //Write commands line by line
         foreach ($commands as $command) {
             Storage::disk('public')->append($decoded_json['filename'], $command);
         }
     }
 }
+/*
+$collection = collect([
+    ['name' => 'Chair', 'colors' => ['Black']],
+    ['name' => 'Desk', 'colors' => ['Black', 'Mahogany']],
+    ['name' => 'Bookcase', 'colors' => ['Red', 'Beige', 'Brown']],
+]);
+
+$collection->sum(function ($product) {
+    return count($product['colors']);
+});
+// 6
+*/
+
