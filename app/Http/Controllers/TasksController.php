@@ -20,7 +20,8 @@ class TasksController extends Controller
         // return $tasks_collection->all()
 
         $sorted_tasks = $tasks_collection->sortByDesc('dependencies');
-        return $sorted_tasks->values()->all();
+
+        return $sorted_tasks->values()->all();   //For testing
 
         $commands = $sorted_tasks->pluck('command');
 
