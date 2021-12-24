@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class TasksController extends Controller
 {
     //
-    function save_file(Request $request)
+    function send_tasks(Request $request)
     {
         $decoded_json = json_decode($request->getContent(), true);
 

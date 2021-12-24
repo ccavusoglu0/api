@@ -18,5 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post("save_file",[TasksController::class,'save_file']);
+Route::post("send_tasks",[TasksController::class,'send_tasks']);
 
